@@ -30,15 +30,6 @@ let newPointStructure = transform (oldPointStructure);
 //console.log(newPointStructure);
 newPointStructure[' '] = 0;
 //console.log(newPointStructure);
-/*
-function scrabbleScorer (word){
-  word = word.toLowerCase();
-  let score = 0;
-  for(i = 0; i<word.length; i++){
-    score = score + newPointStructure[word[i]];
-  }
-  return console.log(`Score for '${word}':  ${score}`);;
-}*/
 
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
@@ -68,38 +59,6 @@ function initialPrompt() {
    return userWord;
 };
 
-/*function simple(word) {
-  let points = 0;
- 	for (let i = 0; i < word.length; i++) {
- 	  	if(word[i] === ' '){
-         points = points + 0;
-       } else{
-         points = points +1;
-       }
-	  }
-	//return points;
-  return console.log(`Score for '${word}':  ${points}`);
- }
-
-//let simpleScore = simpleScore (initialPrompt());
-
-
-function bonusVowels (word){
-  let points = 0;
-  //word = word.toUpperCase();
-  for (let i = 0; i < word.length; i++) {
- 	  	if ( vowels.includes(word[i]) ) {
-        points = points + 3;
-       } else if (word[i] === ' ') {
-         points = points + 0;
-       } else {
-          points = points + 1;
-       }
-	 }
-   return console.log(`Score for '${word}':  ${points}`);
-   //return points;
-}*/
-
 let simpleScore = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
@@ -113,7 +72,6 @@ let simpleScore = {
          points = points +1;
        }
 	  }
-	//return points;
   return console.log(`Score for '${word}':  ${points}`);
   }
 };
