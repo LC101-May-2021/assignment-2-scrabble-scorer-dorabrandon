@@ -118,8 +118,8 @@ let scrabble = {
 	}
 };
 
-const scoringAlgorithms = { simple, vowelBonus, scrabble };
-//console.log(scoringAlgorithms);
+const scoringAlgorithms = [ simple, vowelBonus, scrabble ];
+console.log(scoringAlgorithms);
 
 function scorerPrompt(word) {
 	let scoreType = input.question(
