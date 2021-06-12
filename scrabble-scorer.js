@@ -60,7 +60,7 @@ let simpleScore = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
   //scorerFunction: function (word){return simple(word);}
-  scorerFunction: function (word){
+  scoringFunction: function (word){
       let score = 0;
  	    for (let i = 0; i < word.length; i++) {
  	  	if(word[i] === ' '){
@@ -78,7 +78,7 @@ let vowelBonusScore = {
   name: "Bonus Vowels",
   description:"Vowels are 3 pts, consonants are 1 pt.",
  // scorerFunction: function (word){return bonusVowels(word);}
- scorerFunction: function (word){
+ scoringFunction: function (word){
    let score = 0;
     for (let i = 0; i < word.length; i++) {
  	  	if (vowels.includes(word[i]) ) {
@@ -98,7 +98,7 @@ let scrabbleScore = {
   name: "Scrabble",
   description: "The traditional scoring algorithm.",
   //scorerFunction: function (word){return oldScrabbleScorer (word)}
-  scorerFunction: function (word){
+  scoringFunction: function (word){
     word = word.toLowerCase();
     let score = 0;
     for(i = 0; i<word.length; i++){
@@ -117,7 +117,7 @@ function scorerPrompt(word) {
     scoreType = input.question("\nWhich scoring algorithm would you like to use? \n\n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points \n2 - Scrabble: Uses scrabble point system \nEnter 0, 1, or 2: ");
   }
   //scoringAlgorithms[scoreType].scorerFunction(word);
-  return console.log(`Score for '${word}': ${scoringAlgorithms[scoreType].scorerFunction(word)}'`)
+  return console.log(`Score for '${word}': ${scoringAlgorithms[scoreType].scoringFunction(word)}`)
 
 }
 
