@@ -12,6 +12,8 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
+const vowels = ["A","E","I","O","U","a","e","i","o","u"];
+
 function transform(oldPointingSystem) {
   let newStructure = { };
   for (item in oldPointingSystem){
@@ -28,7 +30,7 @@ let newPointStructure = transform (oldPointStructure);
 //console.log(newPointStructure);
 newPointStructure[' '] = 0;
 //console.log(newPointStructure);
-
+/*
 function scrabbleScorer (word){
   word = word.toLowerCase();
   let score = 0;
@@ -36,7 +38,7 @@ function scrabbleScorer (word){
     score = score + newPointStructure[word[i]];
   }
   return console.log(`Score for '${word}':  ${score}`);;
-}
+}*/
 
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
@@ -66,7 +68,7 @@ function initialPrompt() {
    return userWord;
 };
 
-function simple(word) {
+/*function simple(word) {
   let points = 0;
  	for (let i = 0; i < word.length; i++) {
  	  	if(word[i] === ' '){
@@ -80,7 +82,7 @@ function simple(word) {
  }
 
 //let simpleScore = simpleScore (initialPrompt());
-let vowels = ["A","E","I","O","U","a","e","i","o","u"];
+
 
 function bonusVowels (word){
   let points = 0;
@@ -96,18 +98,44 @@ function bonusVowels (word){
 	 }
    return console.log(`Score for '${word}':  ${points}`);
    //return points;
-}
+}*/
 
 let simpleScore = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
-  scorerFunction: function (word){return simple(word);}
+  //scorerFunction: function (word){return simple(word);}
+  scorerFunction: function (word){
+      let points = 0;
+ 	    for (let i = 0; i < word.length; i++) {
+ 	  	if(word[i] === ' '){
+         points = points + 0;
+       } else{
+         points = points +1;
+       }
+	  }
+	//return points;
+  return console.log(`Score for '${word}':  ${points}`);
+  }
 };
 
 let vowelBonusScore = {
   name: "Bonus Vowels",
   description:"Vowels are 3 pts, consonants are 1 pt.",
-  scorerFunction: function (word){return bonusVowels(word);}
+ // scorerFunction: function (word){return bonusVowels(word);}
+ scorerFunction: function (word){
+   let points = 0;
+  //word = word.toUpperCase();
+  for (let i = 0; i < word.length; i++) {
+ 	  	if (vowels.includes(word[i]) ) {
+        points = points + 3;
+       } else if (word[i] === ' ') {
+         points = points + 0;
+       } else {
+          points = points + 1;
+       }
+	 }
+   return console.log(`Score for '${word}':  ${points}`);
+ }
 };
 
 let scrabbleScore = {
@@ -117,7 +145,13 @@ let scrabbleScore = {
   scorerFunction: function (word){
     //console.log(word)
    // console.log(scrabbleScorer(word));
-    return scrabbleScorer(word);
+  //  return scrabbleScorer(word);
+    word = word.toLowerCase();
+    let score = 0;
+   for(i = 0; i<word.length; i++){
+    score = score + newPointStructure[word[i]];
+    }
+    return console.log(`Score for '${word}':  ${score}`);;
     }
 };
 
