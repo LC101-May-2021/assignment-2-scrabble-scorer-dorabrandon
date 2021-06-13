@@ -96,30 +96,33 @@ function scrabbleScore(word) {
 let simple = {
 	name: 'Simple Score',
 	description: 'Each letter is worth 1 point.',
-	scoringFunction: function(word) {
-		return simpleScore(word);
-	}
+	scoringFunction: simpleScore
+  //scoringFunction: function(word) {
+//		return simpleScore(word);
+//	}
 };
 
 let vowelBonus = {
 	name: 'Bonus Vowels',
 	description: 'Vowels are 3 pts, consonants are 1 pt.',
-	scoringFunction: function(word) {
+	scoringFunction: vowelBonusScore
+  /*scoringFunction: function(word) {
 		return vowelBonusScore(word);
-	}
+  }*/
 };
 
 let scrabble = {
 	name: 'Scrabble',
 	description: 'The traditional scoring algorithm.',
-	//scorerFunction: function (word){return oldScrabbleScorer (word)}
-	scoringFunction: function(word) {
+	scoringFunction: scrabbleScore
+  //scorerFunction: function (word){return oldScrabbleScorer (word)}
+	/*scoringFunction: function(word) {
 		return scrabbleScore(word);
-	}
+  }*/
 };
 
 const scoringAlgorithms = [ simple, vowelBonus, scrabble ];
-console.log(scoringAlgorithms);
+//console.log(scoringAlgorithms);
 
 function scorerPrompt(word) {
 	let scoreType = input.question(
